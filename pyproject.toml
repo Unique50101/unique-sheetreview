@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unique-sheetreview"
+version = "0.1.0"
+description = "Scan CSV and Excel files and mark data quality issues directly on a review copy."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "Unique50101"}]
+dependencies = ["openpyxl>=3.1.5,<4", "defusedxml>=0.7.1"]
+
+[project.urls]
+Repository = "https://github.com/Unique50101/unique-sheetreview"
+Issues = "https://github.com/Unique50101/unique-sheetreview/issues"
+
+[tool.setuptools]
+packages = ["unique_sheetreview"]
