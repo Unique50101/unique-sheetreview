@@ -1,0 +1,39 @@
+name: Publish SheetReview container
+on:
+  push:
+    paths: ['.github/workflows/container.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  packages: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v0.1.0
+      - name: Build and verify the release image
+        run: |
+          image=ghcr.io/unique50101/unique-sheetreview
+          docker build -t "$image:0.1.0" - <<'DOCKERFILE'
+          FROM python:3.12-slim
+          LABEL org.opencontainers.image.source="https://github.com/Unique50101/unique-sheetreview"
+          LABEL org.opencontainers.image.description="Scan CSV and Excel files for data-quality issues with SheetReview."
+          LABEL org.opencontainers.image.version="0.1.0"
+          RUN python -m pip install --no-cache-dir unique-sheetreview==0.1.0
+          WORKDIR /data
+          ENTRYPOINT ["python","-c","import argparse; from unique_sheetreview import scan; p=argparse.ArgumentParser(description='Scan CSV or Excel data'); p.add_argument('file'); p.add_argument('--output'); p.add_argument('--required', action='append', default=[]); p.add_argument('--unique', action='append', default=[]); a=p.parse_args(); r=scan(a.file, required=a.required, unique=a.unique); print(r); r.save_review_copy(a.output) if a.output else None"]
+          CMD ["--help"]
+          DOCKERFILE
+          docker run --rm -v "$PWD/examples:/data" "$image:0.1.0" orders.csv --required OrderID --unique OrderID --output review.xlsx | grep -F 'High: 3 | Moderate: 1 | Low: 1'
+          test -s examples/review.xlsx
+      - name: Publish version and latest tags
+        env:
+          REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          image=ghcr.io/unique50101/unique-sheetreview
+          printf '%s' "$REGISTRY_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          docker tag "$image:0.1.0" "$image:latest"
+          docker push "$image:0.1.0"
+          docker push "$image:latest"
