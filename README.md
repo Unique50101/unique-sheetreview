@@ -1,5 +1,10 @@
 # SheetReview
 
+## Use in Colab or local Jupyter
+
+[Open the quickstart in Colab](https://colab.research.google.com/github/Unique50101/unique-sheetreview/blob/main/Quickstart.ipynb) or download [Quickstart.ipynb](Quickstart.ipynb) and open it with a Python 3 Jupyter kernel. Run the cells from top to bottom. The example scans a CSV, prints severity levels, and writes a highlighted Excel review copy. Replace the sample path with your own CSV or workbook path.
+
+
 Give SheetReview a CSV or Excel file and get a list of data-quality issues with the sheet, cell, priority, and suggested fix. Export the findings as an Excel copy with highlighted cells and comments for the person who supplied the data.
 
 ## Quick start
