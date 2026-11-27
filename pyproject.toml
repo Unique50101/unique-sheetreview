@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "unique-sheetreview"
-version = "0.1.0"
+version = "0.1.1"
 description = "Scan CSV and Excel files and mark data quality issues directly on a review copy."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -18,3 +18,6 @@ Issues = "https://github.com/Unique50101/unique-sheetreview/issues"
 
 [tool.setuptools]
 packages = ["unique_sheetreview"]
+
+[project.optional-dependencies]
+notebook = ["unique-interface>=0.1.0,<0.2"]
