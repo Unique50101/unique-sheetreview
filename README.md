@@ -2,6 +2,10 @@
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Unique50101/unique-sheetreview/blob/main/SheetReview.ipynb) [![Launch Jupyter](https://img.shields.io/badge/Jupyter-launch-F37626?logo=jupyter&logoColor=white)](https://mybinder.org/v2/gh/Unique50101/unique-sheetreview/main?urlpath=lab%2Ftree%2FSheetReview.ipynb) [![Open in VS Code](https://img.shields.io/badge/VS_Code-open-007ACC)](https://vscode.dev/github/Unique50101/unique-sheetreview/blob/main/SheetReview.ipynb)
 
+## Install the interface by name
+
+Run `%pip -q install --upgrade unique-interface` in a notebook to update the notebook interface. [Unique Interface examples and documentation](https://github.com/Unique50101/unique-interface#readme)
+
 ## Run the notebook
 
 Run the notebook to open the file picker. Select a CSV or XLSX, click **Review file**, then download the marked workbook. A separate cell includes a runnable sample. The Jupyter badge launches Binder, a public hosted service. For local files, download [SheetReview.ipynb](https://raw.githubusercontent.com/Unique50101/unique-sheetreview/main/SheetReview.ipynb) and open it in local JupyterLab. The VS Code badge opens the notebook editor. Select a Python kernel or open the notebook in desktop VS Code to execute it.
