@@ -4,7 +4,7 @@
 
 ## Install the interface by name
 
-Run `%pip -q install --upgrade unique-interface` in a notebook to update the notebook interface. SheetReview uses its file picker and download panel. [Unique Interface developer guide](https://uniqueopensources.web.app/docs/unique-interface)
+Run `%pip -q install --upgrade unique-interface` in a notebook to update the notebook interface. [Unique Interface examples and documentation](https://github.com/Unique50101/unique-interface#readme)
 
 ## Run the notebook
 
